@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head><h1 draggable="true"><center>JavaScript Challenge.</center></h1></head>
+        <title>TBC Productions</title>
+            <body bgcolor="whitesmoke">
+
+                <script type="text/javascript">
+    
+            //Declare base variables. 
+            var name;
+            var grossPay;
+            var fit = .15;
+            var st = .035;
+            var sst = .0575;
+            var mmt = .0275;
+            var pp = .05;
+            var health = 75;
+            var totalDeductions;
+            var netPay;
+            var finalPay;
+            var date = new Date();
+            date = date.toDateString();
+                    
+            //Ask User for name and gross income.
+            name = prompt("please enter your name.")
+    
+            grossPay = prompt("How much was your pay?")        
+                    
+            //Calculate deductions.
+            totalDeductions = (grossPay * fit) + (grossPay * st) + (grossPay * sst) + (grossPay * mmt) + (grossPay * pp);
+
+            //Divide seperate deductions.
+            var totalFit = grossPay * fit;
+            var totalSt = grossPay * st;
+            var totalSst = grossPay * sst;
+            var totalMmt = grossPay * mmt;
+            var totalPp = grossPay * pp;
+        
+            //Calculate net pay.
+            netPay = grossPay - totalDeductions;
+        
+            //Subtract flat rates for final pay amount.
+            finalPay = netPay - health;
+        
+            //Create calculated variable to accept toFixed command in outtable.
+            var grossPayFixed = grossPay + 1 - 1;
+        
+            //Easy if statement to change final pay color if found negative.
+            if (finalPay < 0) {
+        
+            //Display Employer disclaimer and employye name with date.
+            document.write ("<center><strong>Employee Pay Information For:</strong> <br>")
+        
+            document.write ("<strong>" + name + "</strong>" + "&nbsp" + "&nbsp" + "&nbsp" + date + "<br>")
+        
+            //Stack a table and various font styles with embedded variables inside of a single variable using += operator.
+            var outTable = "<center><table style='border: inset 1px;'><tr><td style='text-align:left'>" + "Gross Pay:" + "</td>";
+            outTable += "<td style= 'text-align: right;'>" + "$" + grossPayFixed.toFixed(2) + "</td></tr>";            
+
+            outTable += "<tr><td style= 'text-align: left;'>" + "Federal Tax:" + "</td>";
+            outTable += "<td style= 'text-align: right; color: red;'>" + "$-" + totalFit.toFixed(2) + "</td></tr>";
+        
+            outTable += "<tr><td style= 'text-align: left;'>" + "State Tax:" + "</td>";
+            outTable += "<td style= 'text-align: right; color: red;'>" + "$-" + totalSt.toFixed(2) + "</td></tr>";
+        
+            outTable += "<tr><td style= 'text-align: left;'>" + "Social Security:" + "</td>";
+            outTable += "<td style= 'text-align: right; color: red;'>" + "$-" + totalSst.toFixed(2) + "</td></tr>";   
+        
+            outTable += "<tr><td style= 'text-align: left;'>" + "Medicare/Medicade:" + "</td>";
+            outTable += "<td style= 'text-align: right; color: red;'>" + "$-" + totalMmt.toFixed(2) + "</td></tr>";      
+        
+            outTable += "<tr><td style= 'text-align: left;'>" + "Pension Plan:" + "</td>";
+            outTable += "<td style= 'text-align: right; color: red;'>" + "$-" + totalPp.toFixed(2) + "</td></tr>";       
+         
+            outTable += "<tr><td style= 'text-align: left;'>" + "Health Insurance:" + "</td>";
+            outTable += "<td style= 'text-align: right; color: red;'>" + "$-" + health.toFixed(2) + "<font color= 'black'>" + " (Flat Rate)" + "</td></tr>"; 
+        
+            outTable += "<tr><td style='text-align: center;' colspan =2>" + "-----------------------------------------------------------" + "</td>";
+        
+            outTable += "<tr><td style= 'text-align: left;'>" + "Net Pay:" + "</td>";
+            outTable += "<td style= 'text-align: right;'>" + "$<font color= 'red'>" + finalPay.toFixed(2) + "</td></tr>";
+                
+            //Display stacked variable.    
+            document.write(outTable);
+                
+            }   
+        
+            //Positive outcome.
+            else {
+            
+            document.write ("<center><strong>Employee Pay Information For:</strong> <br>")
+        
+            document.write ("<strong>" + name + "</strong>" + "&nbsp" + "&nbsp" + "&nbsp" + date + "<br>")
+        
+            var outTable = "<center><table style='border: inset 1px;'><tr><td style='text-align:left'>" + "Gross Pay:" + "</td>";
+            outTable += "<td style= 'text-align: right;'>" + "$" + grossPayFixed.toFixed(2) + "</td></tr>";            
+
+            outTable += "<tr><td style= 'text-align: left;'>" + "Federal Tax:" + "</td>";
+            outTable += "<td style= 'text-align: right; color: red;'>" + "$-" + totalFit.toFixed(2) + "</td></tr>";
+        
+            outTable += "<tr><td style= 'text-align: left;'>" + "State Tax:" + "</td>";
+            outTable += "<td style= 'text-align: right; color: red;'>" + "$-" + totalSt.toFixed(2) + "</td></tr>";
+        
+            outTable += "<tr><td style= 'text-align: left;'>" + "Social Security:" + "</td>";
+            outTable += "<td style= 'text-align: right; color: red;'>" + "$-" + totalSst.toFixed(2) + "</td></tr>";   
+        
+            outTable += "<tr><td style= 'text-align: left;'>" + "Medicare/Medicade:" + "</td>";
+            outTable += "<td style= 'text-align: right; color: red;'>" + "$-" + totalMmt.toFixed(2) + "</td></tr>";      
+        
+            outTable += "<tr><td style= 'text-align: left;'>" + "Pension Plan:" + "</td>";
+            outTable += "<td style= 'text-align: right; color: red;'>" + "$-" + totalPp.toFixed(2) + "</td></tr>";       
+        
+            outTable += "<tr><td style= 'text-align: left;'>" + "Health Insurance:" + "</td>";
+            outTable += "<td style= 'text-align: right; color: red;'>" + "$-" + health.toFixed(2) + "<font color= 'black'>" + " (Flat Rate)" + "</td></tr>"; 
+        
+            outTable += "<tr><td style='text-align: center;' colspan =2>" + "-----------------------------------------------------------" + "</td>";
+        
+            outTable += "<tr><td style= 'text-align: left;'>" + "Net Pay:" + "</td>";
+            outTable += "<td style= 'text-align: right;'>" + "$" + finalPay.toFixed(2) + "</td></tr>";
+            
+            document.write(outTable);
+            }
+        </script>    
+    </body>
+</html>
